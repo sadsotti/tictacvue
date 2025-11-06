@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import Board from './Board.vue';
 
 const board = ref([
     ['', '', ''],
@@ -14,10 +15,6 @@ const currentTheme = ref('dark');
 
 const toggleTheme = () => {
     currentTheme.value = currentTheme.value === 'dark' ? 'light' : 'dark';
-};
-
-const isWinningCell = (row, col) => {
-    return winningCells.value.some(coord => coord[0] === row && coord[1] === col);
 };
 
 const checkWin = () => {
@@ -89,23 +86,12 @@ const resetGame = () => {
     <h2 class="game-status" v-else-if="winner === 'Draw'">It's a Draw! 🤝</h2>
     <h2 class="game-status" v-else>Turn for: <span :class="{'x-player': currentPlayer === 'X', 'o-player': currentPlayer === 'O'}">{{ currentPlayer }}</span></h2>
 
-    <div class="board-modern">
-      <template v-for="(row, rowIndex) in board" :key="rowIndex">
-        <div 
-          class="square-modern" 
-          v-for="(cell, colIndex) in row" 
-          :key="colIndex" 
-          @click="makeMove(rowIndex, colIndex)" 
-          :class="{ 
-              'x-mark-modern': cell === 'X', 
-              'o-mark-modern': cell === 'O',
-              'winning-cell': isWinningCell(rowIndex, colIndex) 
-          }"
-        >
-          {{ cell }}
-        </div>
-      </template>
-    </div>
+    <Board
+        :board="board"
+        :winning-cells="winningCells"
+        :winner="winner"
+        @cell-clicked="makeMove"
+    />
 
     <button @click="resetGame" class="reset-button-modern">New Game</button>
   </div>

@@ -8,7 +8,7 @@ A fun, responsive, and intuitive web-based **Tic Tac Toe game**, built with **Vu
 
 Click the link below:
 
-👉 [**tictacvue**](https://tictacvue-s2i.netlify.app/) 👈
+👉 [**tictacvue**](https://tictacvue-fixed.netlify.app/) 👈
 
 ---
 
@@ -105,6 +105,18 @@ The project follows a standard Vite/Vue structure for better maintainability:
 * `vite.config.js`: **Vite** configuration file (defines plugins, build options, etc.).
 * `package.json`: Defines the project dependencies and scripts.
 * `README.md`: This project description file.
+
+---
+
+### ✨ Implemented Solution (Component Hierarchy)
+
+The original monolithic component (`Game.vue`) was refactored into a clear component hierarchy to ensure **Separation of Concerns**:
+
+1.  **`Game.vue` (Parent):** Holds the **central reactive state** and all **business logic** (`makeMove`, `checkWin`, `resetGame`).
+2.  **`Board.vue` (Child):** Responsible for the **structural rendering** of the 3x3 grid. It receives data (like the board state) via **Props** and forwards user interaction events.
+3.  **`Cell.vue` (Grandchild):** Handles the **single cell's presentation** and direct user interaction. It receives its specific details via **Props** and notifies the `Board` component of a click using **Custom Events** (`$emit`).
+
+This reorganization results in code that is significantly more **modular, reusable, and maintainable**.
 
 ---
 
