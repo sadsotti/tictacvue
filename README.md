@@ -125,4 +125,4 @@ This reorganization results in code that is significantly more **modular, reusab
 * [start2impact](https://www.start2impact.it/)
 * [My LinkedIn](https://linkedin.com/in/lorenzo-sottile)
 
-  ---
+---
