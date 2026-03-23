@@ -8,7 +8,7 @@ A fun, responsive, and intuitive web-based **Tic Tac Toe game**, built with **Vu
 
 Click the link below:
 
-👉 [**tictacvue**](https://tictacvue-fixed.netlify.app/) 👈
+👉 [**tictacvue**](https://tictacvue-s2i.netlify.app) 👈
 
 ---
 
